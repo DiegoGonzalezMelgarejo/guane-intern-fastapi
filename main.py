@@ -72,7 +72,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_username(db, username=user.username)
     if db_user:
-        raise HTTPException(status_code=400, detail="Username already registered")
+        raise HTTPException(status_code=400, detail="Username Registrado")
     return crud.create_user(db=db, user=user)
 
 
@@ -125,7 +125,9 @@ async def get_dog_by_name(dog_name,db: Session = Depends(get_db)):
 @app.put("/dog/{dog_name}", response_model=schemas.Dog)
 async def update_dog(blog: schemas.Dog, dog_name,db: Session = Depends(get_db)):
     return crud.update_Dog(db=db, dog_name=dog_name, blog=blog)
-
+@app.get("/user")
+async def get_all_users(db: Session = Depends(get_db)):
+    return crud.get_all_users(db=db)
 
 
 @app.delete("/dog/{dog_name}")

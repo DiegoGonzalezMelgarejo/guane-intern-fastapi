@@ -6,8 +6,10 @@ class UserInfoBase(BaseModel):
 
 
 class UserCreate(UserInfoBase):
-    fullname: str
+    apellido: str
     password: str
+    email:str
+    
 
 
 class UserAuthenticate(UserInfoBase):

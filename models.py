@@ -6,10 +6,10 @@ class UserInfo(Base):
     __tablename__ = "user_info"
 
     id = Column(Integer, primary_key=True, index=True)
-    nombre = Column(String(100))
     username = Column(String(100), unique=True)
     password = Column(String(100))
-    fullname = Column(String(100), unique=True)
+    apellido = Column(String(100), unique=True)
+    email = Column(String(100), unique=True)
 
 class Blog(Base):
     __tablename__ = "blog"
