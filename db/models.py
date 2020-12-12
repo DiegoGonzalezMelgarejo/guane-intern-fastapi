@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String,Boolean
+from sqlalchemy import Column, Integer, String,Boolean,ForeignKey
 from db.database import Base
 
 
@@ -24,6 +24,7 @@ class Dog(Base):
     picture = Column(String(500))
     create_date = Column(String(100))
     is_adopted = Column(Boolean)
+    user_id = Column( ForeignKey("user_info.id"))
     
     
 

@@ -1,5 +1,5 @@
-import Models.models as models
-from db.schemas import UserInfo, TokenData, UserCreate, Token
+import db.models as models
+from Models.schemas import UserInfo, TokenData, UserCreate, Token
 from db.database import engine, SessionLocal
 
 models.Base.metadata.create_all(bind=engine)

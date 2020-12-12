@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-import Models.models as models, db.schemas as schemas
+import db.models as models, Models.schemas as schemas
 import bcrypt
 from fastapi.responses import JSONResponse
 import requests
@@ -55,3 +55,15 @@ def update_Dog(db: Session, dog_name:str,blog: schemas.Dog):
 
 def get_all_dogs2(db: Session):
     return db.query(models.Dog).filter(models.Dog.is_adopted ==1).all()
+
+def adoptardog(db:Session,id:int,namedog:str):
+ 
+    try:
+            db.query(models.Dog).filter(models.Dog.name == namedog).update({"user_id":id,"is_adopted":1})
+            db.commit()
+        
+            return JSONResponse({"message": "Perro adoptado"}, status_code=202)
+    except Exception:
+            return JSONResponse({"message": "Hubo un error en la base de datos"}, status_code=404)
+  
+      

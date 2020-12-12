@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
-import Models.models as models, db.schemas as schemas
+import db.models as models, Models.schemas as schemas
 import bcrypt
 from fastapi.responses import JSONResponse
 import requests
+from Dao.DogDao import adoptardog
 from datetime import datetime
 
 def get_user_by_username(db: Session, username: str):
@@ -59,3 +60,5 @@ def remove_user(db: Session, user_name: str):
 
 def get_all_users(db: Session):
     return db.query(models.UserInfo).all()
+def adoptarDao(db: Session,user:models.UserInfo,name:str):
+    return adoptardog(db=db,id=user.id,namedog=name)

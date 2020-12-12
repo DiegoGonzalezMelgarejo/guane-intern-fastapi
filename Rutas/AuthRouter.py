@@ -8,11 +8,11 @@ from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
 import Dao.crud as crud
-import Models.models as models
-import db.schemas as schemas
+import db.models as models
+import Models.schemas as schemas
 from app_utils import decode_access_token
 from db.database import engine, SessionLocal
-from db.schemas import UserInfo, TokenData, UserCreate, Token
+from Models.schemas import UserInfo, TokenData, UserCreate, Token
 from db.conexion import get_db
 from Dao.UserDao  import get_user_by_username,check_username_password
 from fastapi import APIRouter
@@ -45,11 +45,11 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
 
 @post_route.post("/authenticate", response_model=Token)
 def authenticate_user(user: schemas.UserAuthenticate, db: Session = Depends(get_db)):
-    db_user = Dao.UserDao.get_user_by_username(db, username=user.username)
+    db_user = get_user_by_username(db, username=user.username)
     if db_user is None:
         raise HTTPException(status_code=400, detail="Username not existed")
     else:
-        is_password_correct = Dao.UserDao.check_username_password(db, user)
+        is_password_correct = check_username_password(db, user)
         if is_password_correct is False:
             raise HTTPException(status_code=400, detail="Password is not correct")
         else:

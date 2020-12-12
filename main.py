@@ -7,12 +7,12 @@ from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
 import Dao.crud as crud
-import Models.models as models
-import db.schemas as schemas
+import db.models as models
+import Models.schemas as schemas
 from app_utils import decode_access_token
 
 from db.database import engine, SessionLocal
-from db.schemas import UserInfo, TokenData, UserCreate, Token
+from Models.schemas import UserInfo, TokenData, UserCreate, Token
 from db.conexion import get_db
 import Rutas.DogRouter as Dogrouter
 import Rutas.AuthRouter as Auth
