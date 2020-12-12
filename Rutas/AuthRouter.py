@@ -14,7 +14,7 @@ from app_utils import decode_access_token
 from db.database import engine, SessionLocal
 from Models.schemas import UserInfo, TokenData, UserCreate, Token
 from db.conexion import get_db
-from Dao.UserDao  import get_user_by_username,check_username_password
+from Dao.UserDao  import get_user_by_usernamedao,check_username_password
 from fastapi import APIRouter
 post_route = APIRouter()
 
@@ -34,7 +34,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
         token_data = TokenData(username=username)
     except PyJWTError:
         raise credentials_exception
-    user = get_user_by_username(db, username=token_data.username)
+    user = get_user_by_usernamedao(db, username=token_data.username)
     if user is None:
         raise credentials_exception
     return user
@@ -45,7 +45,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
 
 @post_route.post("/authenticate", response_model=Token)
 def authenticate_user(user: schemas.UserAuthenticate, db: Session = Depends(get_db)):
-    db_user = get_user_by_username(db, username=user.username)
+    db_user = get_user_by_usernamedao(db, username=user.username)
     if db_user is None:
         raise HTTPException(status_code=400, detail="Username not existed")
     else:
