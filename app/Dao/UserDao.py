@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
-import db.models as models, Models.schemas as schemas
+import app.db.models as models, app.Models.schemas as schemas
 import bcrypt
 from fastapi.responses import JSONResponse
 import requests
-from Dao.DogDao import adoptardogdao
+from app.Dao.DogDao import adoptardogdao
 from datetime import datetime
 
 def get_user_by_usernamedao(db: Session, username: str):

@@ -7,16 +7,16 @@ from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
 
-import db.models as models
-import Models.schemas as schemas
-from app_utils import decode_access_token
+import app.db.models as models
+import app.Models.schemas as schemas
+from app.app_utils import decode_access_token
 
-from db.database import engine, SessionLocal
-from Models.schemas import UserInfo, TokenData, UserCreate, Token
-from  db.conexion import get_db
-import Rutas.DogRouter as Dogrouter
-import Rutas.AuthRouter as Auth
-import Rutas.UserRouter as Usuario
+from app.db.database import engine, SessionLocal
+from app.Models.schemas import UserInfo, TokenData, UserCreate, Token
+from  app.db.conexion import get_db
+import app.Rutas.DogRouter as Dogrouter
+import app.Rutas.AuthRouter as Auth
+import app.Rutas.UserRouter as Usuario
 models.Base.metadata.create_all(bind=engine)
 
 
@@ -44,6 +44,3 @@ app.include_router(Dogrouter.post_route, prefix="/api")
 app.include_router(Usuario.post_route, prefix="/api")
 
 
-if __name__ == "__main__":
-    
-    uvicorn.run(app , host="127.0.0.1", port=8081)

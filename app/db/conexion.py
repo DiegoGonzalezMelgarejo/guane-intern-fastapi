@@ -1,6 +1,6 @@
-import db.models as models
-from Models.schemas import UserInfo, TokenData, UserCreate, Token
-from db.database import engine, SessionLocal
+import app.db.models as models
+from app.Models.schemas import UserInfo, TokenData, UserCreate, Token
+from app.db.database import engine, SessionLocal
 
 models.Base.metadata.create_all(bind=engine)
 def get_db():

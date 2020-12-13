@@ -8,15 +8,15 @@ from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
 
-import db.models as models
-import Models.schemas as schemas
-from app_utils import decode_access_token
-from db.database import engine, SessionLocal
-from Models.schemas import UserInfo, TokenData, UserCreate, Token
-from db.conexion import get_db
-from Dao.UserDao  import get_all_usersdao,get_user_by_usernamedao,update_Userdao,create_userdao,remove_userdao,adoptarDao
+import app.db.models as models
+import app.Models.schemas as schemas
+from app.app_utils import decode_access_token
+from app.db.database import engine, SessionLocal
+from app.Models.schemas import UserInfo, TokenData, UserCreate, Token
+from app.db.conexion import get_db
+from app.Dao.UserDao  import get_all_usersdao,get_user_by_usernamedao,update_Userdao,create_userdao,remove_userdao,adoptarDao
 from fastapi import APIRouter
-from Rutas.AuthRouter import get_current_user
+from app.Rutas.AuthRouter import get_current_user
 post_route = APIRouter()
 
 
@@ -30,7 +30,7 @@ async def get_users_by_username(user_name,db: Session = Depends(get_db)):
 async def update_User(user: schemas.UserCreate, user_name,db: Session = Depends(get_db),current_user: UserInfo = Depends(get_current_user)):
     return update_Userdao(db=db, username_name=user_name, user=user)
 @post_route.post("/user", response_model=UserInfo)
-def create_users(user: UserCreate, db: Session = Depends(get_db),current_user: UserInfo = Depends(get_current_user)):
+def create_users(user: UserCreate, db: Session = Depends(get_db)):
     return create_userdao(db=db, user=user)
 
 @post_route.delete("/user/{user_name}")

@@ -8,13 +8,13 @@ from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
 
-import db.models as models
-import Models.schemas as schemas
-from app_utils import decode_access_token
-from db.database import engine, SessionLocal
-from Models.schemas import UserInfo, TokenData, UserCreate, Token
-from db.conexion import get_db
-from Dao.UserDao  import get_user_by_usernamedao,check_username_password
+import app.db.models as models
+import app.Models.schemas as schemas
+from app.app_utils import decode_access_token
+from app.db.database import engine, SessionLocal
+from app.Models.schemas import UserInfo, TokenData, UserCreate, Token
+from app.db.conexion import get_db
+from app.Dao.UserDao  import get_user_by_usernamedao,check_username_password
 from fastapi import APIRouter
 post_route = APIRouter()
 
@@ -55,7 +55,7 @@ def authenticate_user(user: schemas.UserAuthenticate, db: Session = Depends(get_
         else:
             from datetime import timedelta
             access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-            from app_utils import create_access_token
+            from app.app_utils import create_access_token
             access_token = create_access_token(
                 data={"sub": user.username}, expires_delta=access_token_expires)
             return {"access_token": access_token, "token_type": "Bearer"}

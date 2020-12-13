@@ -8,15 +8,15 @@ from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
 
-import db.models as models
-import Models.schemas as schemas
-from app_utils import decode_access_token
-from Dao.UserDao import get_user_by_usernamedao
-from db.database import engine, SessionLocal
-from Models.schemas import UserInfo, TokenData, UserCreate, Token
-from db.conexion import get_db
-from Dao.DogDao import create_new_Dogdao,get_dogdao,remove_dogdao,get_all_dogsdao,get_all_dogs2dao,update_Dogdao
-from Rutas.AuthRouter import get_current_user
+import app.db.models as models
+import app.Models.schemas as schemas
+from app.app_utils import decode_access_token
+from app.Dao.UserDao import get_user_by_usernamedao
+from app.db.database import engine, SessionLocal
+from app.Models.schemas import UserInfo, TokenData, UserCreate, Token
+from app.db.conexion import get_db
+from app.Dao.DogDao import create_new_Dogdao,get_dogdao,remove_dogdao,get_all_dogsdao,get_all_dogs2dao,update_Dogdao
+from app.Rutas.AuthRouter import get_current_user
 
 from fastapi import APIRouter
 post_route = APIRouter()

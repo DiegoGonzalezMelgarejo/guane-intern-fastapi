@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-import db.models as models, Models.schemas as schemas
+import app.db.models as models, app.Models.schemas as schemas
 import bcrypt
 from fastapi.responses import JSONResponse
 import requests
