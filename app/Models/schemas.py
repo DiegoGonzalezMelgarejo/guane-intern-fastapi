@@ -16,7 +16,7 @@ class UserAuthenticate(UserInfoBase):
     password: str
 
 
-class UserInfo(UserInfoBase):
+class User(UserInfoBase):
     id: int
 
     class Config:
@@ -49,8 +49,3 @@ class Dog(BaseModel):
     picture:str
     create_date:str
     is_adopted:bool
-
-
-
-
-

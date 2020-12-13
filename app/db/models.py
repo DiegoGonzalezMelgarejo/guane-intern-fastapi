@@ -2,8 +2,8 @@ from sqlalchemy import Column, Integer, String,Boolean,ForeignKey
 from app.db.database import Base
 
 
-class UserInfo(Base):
-    __tablename__ = "user_info"
+class User(Base):
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(100), unique=True)
@@ -11,10 +11,6 @@ class UserInfo(Base):
     apellido = Column(String(100))
     email = Column(String(100))
 
-class Blog(Base):
-    __tablename__ = "blog"
-
-    id = Column(Integer, primary_key=True, index=True)
 
 class Dog(Base):
     __tablename__ ="dog"
@@ -24,7 +20,7 @@ class Dog(Base):
     picture = Column(String(500))
     create_date = Column(String(100))
     is_adopted = Column(Boolean)
-    user_id = Column( ForeignKey("user_info.id"))
+    user_id = Column( ForeignKey("user.id"))
     
     
 

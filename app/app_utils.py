@@ -18,12 +18,3 @@ def create_access_token(*, data: dict, expires_delta: timedelta = None):
 def decode_access_token(*, data: str):
     to_decode = data
     return jwt.decode(to_decode, secret_key, algorithm=algorithm)
-
-
-
-
-
-
-
-
-
