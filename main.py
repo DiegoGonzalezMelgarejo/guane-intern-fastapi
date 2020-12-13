@@ -6,14 +6,14 @@ from sqlalchemy.orm import Session
 from fastapi import Depends, FastAPI, HTTPException
 from starlette import status
 from fastapi.responses import JSONResponse
-import Dao.crud as crud
+
 import db.models as models
 import Models.schemas as schemas
 from app_utils import decode_access_token
 
 from db.database import engine, SessionLocal
 from Models.schemas import UserInfo, TokenData, UserCreate, Token
-from db.conexion import get_db
+from  db.conexion import get_db
 import Rutas.DogRouter as Dogrouter
 import Rutas.AuthRouter as Auth
 import Rutas.UserRouter as Usuario
@@ -42,6 +42,7 @@ app.add_middleware(
 app.include_router(Auth.post_route, prefix="/api")
 app.include_router(Dogrouter.post_route, prefix="/api")
 app.include_router(Usuario.post_route, prefix="/api")
+
 
 if __name__ == "__main__":
     

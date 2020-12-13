@@ -13,6 +13,6 @@ mysql-connector-python = "*"
 bcrypt = "*"
 pytest = "*"
 pyjwt = "*"
-
+ 
 [requires]
 python_version = "3.7"
