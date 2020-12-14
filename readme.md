@@ -14,10 +14,11 @@
 ### Base de datos📋
 
 _Para conectar o cambiar la base de datos  se debe dirigir al archivo que esta en
-app/database y cambiar los datosen estas lineas<br>
+app/database y cambiar los datos en estas lineas<br>
 SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://USER:PASSWORD@"
 
-LINK_AUX = "HOSTNAME/BASEDEDATOS"
+LINK_AUX = "HOSTNAME/BASEDEDATOS"<br>
+Actualmente se esta conectando a una base de datos de una rds en aws<br>
 
 ### Despliege 🔧
 <br>
