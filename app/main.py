@@ -35,7 +35,7 @@ app.add_middleware(
         allow_headers=["*"]
 )
 
-
+#Add the routes with the api prefix#
 app.include_router(Auth.post_route, prefix="/api")
 app.include_router(Dogrouter.post_route, prefix="/api")
 app.include_router(Usuario.post_route, prefix="/api")
