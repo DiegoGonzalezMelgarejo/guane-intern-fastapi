@@ -34,16 +34,12 @@ Los endpoints se visualizarian en http://localhost:8000/docs
 
 ## Lo realizado ⚙️
 
-_Crud de Perros_
+_Crud de Perros_<br>
 _Crud de Usuarios_
 _Listar los adoptados_
 _Se implemento autentificación token jwt_
 _Permite adoptar perros al usuario en sesion_
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
 
-## Contribuyendo 🖇️
 
 
 ⌨️ con ❤️ por [Diego Gonzalez](https://www.linkedin.com/in/diegogonzalez97/) 😊
