@@ -3,10 +3,10 @@
 
 ## Tecnologías utilizadas 🚀
 
--Python
--Docker
--Framework Fastapi(con uvicorn)
--Mysql
+-Python<br>
+-Docker<br>
+-Framework Fastapi(con uvicorn)<br>
+-Mysql<br>
 
 
 
